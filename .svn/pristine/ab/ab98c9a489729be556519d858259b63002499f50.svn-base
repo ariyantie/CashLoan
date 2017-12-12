@@ -1,0 +1,433 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/whitesmoke"
+    android:orientation="vertical"
+    tools:context="com.dumai.xianjindai.activity.MyDataActivity">
+
+    <include layout="@layout/toolbar" />
+
+    <LinearLayout
+        android:layout_width="@dimen/pixel_size_341"
+        android:layout_height="@dimen/pixel_size_92"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/pixel_size_9"
+        android:background="@drawable/full_data_bg"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/text_size_11"
+            android:layout_marginTop="@dimen/text_size_20"
+            android:text="@string/data_full"
+            android:textColor="@color/filter_text_color"
+            android:textSize="@dimen/text_size_16" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/pixel_size_6"
+                android:layout_marginTop="@dimen/pixel_size_20"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:text="@string/full0"
+                android:textColor="@color/black_1"
+                android:textSize="@dimen/text_size_10" />
+
+            <com.dumai.xianjindai.view.HorizontalProgressBar
+                android:id="@+id/horizontal_progress_view"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="8" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/pixel_size_6"
+                android:layout_marginTop="@dimen/pixel_size_20"
+                android:layout_weight="1"
+                android:text="@string/full100"
+                android:textColor="@color/black_1"
+                android:textSize="@dimen/text_size_10" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/pixel_size_16"
+        android:layout_marginTop="@dimen/pixel_size_25"
+        android:text="@string/can_finish"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/text_size_12" />
+
+    <LinearLayout
+        android:layout_width="@dimen/pixel_size_341"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/pixel_size_10"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/pixel_size_9"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/ll_infoIdentity"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/pixel_size_46"
+                android:clickable="true"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="@dimen/pixel_size_35"
+                    android:layout_height="@dimen/pixel_size_35"
+                    android:layout_marginLeft="@dimen/text_size_18"
+                    android:layout_marginRight="@dimen/text_size_2"
+                    android:src="@drawable/icon_infoidentity" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="@dimen/pixel_size_16"
+                    android:layout_weight="3"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10.0dip"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:text="@string/identity_info"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_15" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10.0dip"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:text="@string/true_self"
+                        android:textColor="@color/spec_text_color"
+                        android:textSize="@dimen/text_size_12" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="@dimen/pixel_size_16"
+                    android:layout_weight="1"
+                    android:gravity="right|center_vertical">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/icon_next" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="@dimen/text_size_12"
+                android:background="@color/gainsboro" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/pixel_size_9"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/ll_inforjob"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/pixel_size_46"
+                android:clickable="true"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="@dimen/pixel_size_35"
+                    android:layout_height="@dimen/pixel_size_35"
+                    android:layout_marginLeft="@dimen/text_size_18"
+                    android:layout_marginRight="@dimen/text_size_2"
+                    android:src="@drawable/icon_infojob" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="@dimen/pixel_size_16"
+                    android:layout_weight="3"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10.0dip"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:text="@string/job_info"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_15" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10.0dip"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:text="@string/where_inaugura"
+                        android:textColor="@color/spec_text_color"
+                        android:textSize="@dimen/text_size_12" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="@dimen/pixel_size_16"
+                    android:layout_weight="1"
+                    android:gravity="right|center_vertical">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/icon_next" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="@dimen/text_size_12"
+                android:background="@color/gainsboro" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/pixel_size_9"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/ll_infocontact"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/pixel_size_46"
+                android:clickable="true"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="@dimen/pixel_size_35"
+                    android:layout_height="@dimen/pixel_size_35"
+                    android:layout_marginLeft="@dimen/text_size_18"
+                    android:layout_marginRight="@dimen/text_size_2"
+                    android:src="@drawable/icon_infocontact" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="@dimen/pixel_size_16"
+                    android:layout_weight="3"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10.0dip"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:text="@string/contact_info"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_15" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10.0dip"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:text="@string/attendant_support"
+                        android:textColor="@color/spec_text_color"
+                        android:textSize="@dimen/text_size_12" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="@dimen/pixel_size_16"
+                    android:layout_weight="1"
+                    android:gravity="right|center_vertical">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/icon_next" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="@dimen/text_size_12"
+                android:background="@color/gainsboro" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/pixel_size_9"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/ll_credit_auth"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/pixel_size_46"
+                android:clickable="true"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="@dimen/pixel_size_35"
+                    android:layout_height="@dimen/pixel_size_35"
+                    android:layout_marginLeft="@dimen/text_size_18"
+                    android:layout_marginRight="@dimen/text_size_2"
+                    android:src="@drawable/icon_credit_auth" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="@dimen/pixel_size_16"
+                    android:layout_weight="3"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10.0dip"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:text="@string/credit_auth"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_15" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10.0dip"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:text="@string/rapid_auth"
+                        android:textColor="@color/spec_text_color"
+                        android:textSize="@dimen/text_size_12" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="@dimen/pixel_size_16"
+                    android:layout_weight="1"
+                    android:gravity="right|center_vertical">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/icon_next" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="@dimen/text_size_12"
+                android:background="@color/gainsboro" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/text_size_9"
+            android:layout_marginTop="@dimen/pixel_size_9"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/ll_more_auth"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/pixel_size_46"
+                android:clickable="true"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="@dimen/pixel_size_35"
+                    android:layout_height="@dimen/pixel_size_35"
+                    android:layout_marginLeft="@dimen/text_size_18"
+                    android:layout_marginRight="@dimen/text_size_2"
+                    android:src="@drawable/icon_more_auth" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="@dimen/pixel_size_16"
+                    android:layout_weight="3"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10.0dip"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:text="@string/more_auth"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_15" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10.0dip"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:text="@string/promote_quota"
+                        android:textColor="@color/spec_text_color"
+                        android:textSize="@dimen/text_size_12" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="@dimen/pixel_size_16"
+                    android:layout_weight="1"
+                    android:gravity="right|center_vertical">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/icon_next" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

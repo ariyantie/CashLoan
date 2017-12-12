@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="viewanimator-1.0.5">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.android/build-cache/53d8bf7c65744824c946a4275b409deb2f66858a/output/res" />
+      <root url="jar://$USER_HOME$/.android/build-cache/53d8bf7c65744824c946a4275b409deb2f66858a/output/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.florent37/viewanimator/1.0.5/3751bb532fcb91f4a88870de5c1cf07f1cfe9359/viewanimator-1.0.5-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

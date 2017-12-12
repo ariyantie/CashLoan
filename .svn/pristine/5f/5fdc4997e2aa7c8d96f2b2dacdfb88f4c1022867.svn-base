@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/pixel_size_14"
+        android:layout_marginTop="@dimen/pixel_size_10"
+        android:drawableLeft="@drawable/icon_authen_prompt"
+        android:gravity="center_vertical"
+        android:text="@string/authen_prompt_msg"
+        android:textColor="@color/back_4"
+        android:textSize="@dimen/text_size_10" />
+
+</LinearLayout>

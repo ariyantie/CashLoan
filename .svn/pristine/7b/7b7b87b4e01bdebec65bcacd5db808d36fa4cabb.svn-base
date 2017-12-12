@@ -1,0 +1,49 @@
+package com.dumai.xianjindai.activity;
+
+import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.View;
+
+import com.dumai.xianjindai.R;
+import com.dumai.xianjindai.base.BaseActivity;
+import com.dumai.xianjindai.util.view.ToolbarHelper;
+import com.dumai.xianjindai.view.pickers.common.LineConfig;
+
+/**
+ * 名称：InfoCreditActivity.java
+ * 描述：信用认证信息
+ *
+ * @author haoruigang
+ * @version v1.0
+ * @date： 2017-11-24 15:52:48
+ */
+public class InfoCreditActivity extends BaseActivity {
+
+    private String title;
+    private LineConfig config;
+
+    @Override
+    protected int getContentViewId() {
+        return R.layout.dm_activity_info_credit;
+    }
+
+    @Override
+    protected void init() {
+        super.init();
+        Bundle mBundle = getIntent().getExtras();
+        title = mBundle.getString("title");
+    }
+
+    @Override
+    protected void initToolbar(ToolbarHelper toolbarHelper) {
+        toolbarHelper.setTitle(title);
+        Toolbar toolbar = toolbarHelper.getToolbar();
+        toolbar.setNavigationIcon(R.drawable.icon_back);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+    }
+}

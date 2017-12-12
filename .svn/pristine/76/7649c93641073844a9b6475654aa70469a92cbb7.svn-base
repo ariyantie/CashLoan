@@ -1,0 +1,43 @@
+package com.dumai.xianjindai.activity;
+
+import android.support.v7.widget.Toolbar;
+import android.view.View;
+
+import com.dumai.xianjindai.R;
+import com.dumai.xianjindai.base.BaseActivity;
+import com.dumai.xianjindai.util.view.ToolbarHelper;
+
+/**
+ * 名称：AddressInfoActivity.java
+ * 描述：住址信息
+ *
+ * @author haoruigang
+ * @version v1.0
+ * @date： 2017-11-27 12:54:10
+ */
+public class AddressInfoActivity extends BaseActivity {
+
+    @Override
+    protected int getContentViewId() {
+        return R.layout.dm_activity_address_info;
+    }
+
+    @Override
+    protected void initToolbar(ToolbarHelper toolbarHelper) {
+        toolbarHelper.setTitle("住址信息");
+        toolbarHelper.setLeftMenuTitle("更多信息", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+        Toolbar toolbar = toolbarHelper.getToolbar();
+        toolbar.setNavigationIcon(R.drawable.icon_back);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+    }
+}

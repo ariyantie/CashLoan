@@ -1,0 +1,52 @@
+package com.dumai.xianjindai.activity;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.View;
+
+import com.dumai.xianjindai.R;
+import com.dumai.xianjindai.base.BaseActivity;
+import com.dumai.xianjindai.util.view.ToolbarHelper;
+
+/**
+ * 名称：CellPhoenActivity.java
+ * 描述：手机号认证
+ *
+ * @author haoruigang
+ * @version v1.0
+ * @date： 2017-11-27 10:17:54
+ */
+public class CellPhoenActivity extends BaseActivity {
+
+    @Override
+    protected int getContentViewId() {
+        return R.layout.dm_activity_cell_phoen;
+    }
+
+    @Override
+    protected void initToolbar(ToolbarHelper toolbarHelper) {
+        toolbarHelper.setTitle("手机号认证");
+        toolbarHelper.setLeftMenuTitle("信用认证", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+        toolbarHelper.setMenuTitle("提交", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                
+            }
+        });
+
+        Toolbar toolbar = toolbarHelper.getToolbar();
+        toolbar.setNavigationIcon(R.drawable.icon_back);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+    }
+}

@@ -1,0 +1,199 @@
+package com.dumai.xianjindai.activity;
+
+import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import com.dumai.xianjindai.R;
+import com.dumai.xianjindai.base.BaseActivity;
+import com.dumai.xianjindai.util.ToastUtil;
+import com.dumai.xianjindai.util.view.ToolbarHelper;
+import com.dumai.xianjindai.view.AddressPickTask;
+import com.dumai.xianjindai.view.CareerTypeTask;
+import com.dumai.xianjindai.view.LoadingButton;
+import com.dumai.xianjindai.view.pickers.SingleItem;
+import com.dumai.xianjindai.view.pickers.SinglePickContarts;
+import com.dumai.xianjindai.view.pickers.entity.City;
+import com.dumai.xianjindai.view.pickers.entity.County;
+import com.dumai.xianjindai.view.pickers.entity.Province;
+import com.dumai.xianjindai.view.pickers.picker.SinglePicker;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
+/**
+ * 工作信息
+ * haoruigang
+ * 2017-11-24 14:19:04
+ */
+public class InfoJobActivity extends BaseActivity {
+
+    @BindView(R.id.ll_career_type)
+    LinearLayout llCareerType;
+    @BindView(R.id.ll_provincial_city)
+    LinearLayout llProvincialCity;
+    @BindView(R.id.ll_monthly_income)
+    LinearLayout llMonthlyIncome;
+    @BindView(R.id.tv_province)
+    TextView tvProvince;
+    @BindView(R.id.tv_city)
+    TextView tvCity;
+    @BindView(R.id.tv_county)
+    TextView tvCounty;
+    @BindView(R.id.loading_btn)
+    LoadingButton loadingBtn;
+    @BindView(R.id.tv_monthly_income)
+    TextView tvMonthlyIncome;
+    @BindView(R.id.tv_career_type1)
+    TextView tvCareerType1;
+    @BindView(R.id.tv_career_type2)
+    TextView tvCareerType2;
+    @BindView(R.id.tv_career_type3)
+    TextView tvCareerType3;
+    private String title;
+
+    @Override
+    protected int getContentViewId() {
+        return R.layout.dm_activity_info_job;
+    }
+
+    @Override
+    protected void init() {
+        super.init();
+        Bundle mBundle = getIntent().getExtras();
+        title = mBundle.getString("title");
+    }
+
+    @Override
+    protected void initToolbar(ToolbarHelper toolbarHelper) {
+        toolbarHelper.setTitle(title);
+        Toolbar toolbar = toolbarHelper.getToolbar();
+        toolbar.setNavigationIcon(R.drawable.icon_back);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+    }
+
+    @OnClick({R.id.ll_career_type, R.id.ll_provincial_city, R.id.ll_monthly_income, R.id.loading_btn})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.ll_career_type://职位类型
+                CareerTypeTask careertask = new CareerTypeTask(this);
+                careertask.setHideProvince(false);
+                careertask.setHideCounty(false);
+                careertask.setCallback(new CareerTypeTask.Callback() {
+                    @Override
+                    public void onAddressInitFailed() {
+                        ToastUtil.showToast(InfoJobActivity.this, "数据初始化失败");
+                    }
+
+                    @Override
+                    public void onAddressPicked(Province province, City city, County county) {
+                        if (county == null) {
+                            tvCareerType1.setText(province.getAreaName());
+                            tvCareerType2.setText(city.getAreaName());
+                        } else {
+                            tvCareerType1.setText(province.getAreaName());
+                            tvCareerType2.setText(city.getAreaName());
+                            tvCareerType3.setText(county.getAreaName());
+                        }
+                    }
+                });
+                careertask.setMoreCallback(new CareerTypeTask.MoreCallback() {
+                    @Override
+                    public void onAddressInitFailed() {
+                        ToastUtil.showToast(InfoJobActivity.this, "数据初始化失败");
+                    }
+
+                    @Override
+                    public void onFirstWheeled(int index, String item) {
+                        tvCareerType1.setText(item);
+                    }
+
+                    @Override
+                    public void onSecondWheeled(int index, String item) {
+                        tvCareerType2.setText(item);
+                    }
+
+                    @Override
+                    public void onThirdWheeled(int index, String item) {
+                        tvCareerType3.setText(item);
+                    }
+                });
+                careertask.execute("自由职业", "无业", "无业");
+                break;
+            case R.id.ll_provincial_city://地址
+                AddressPickTask addresstask = new AddressPickTask(this);
+                addresstask.setHideProvince(false);
+                addresstask.setHideCounty(false);
+                addresstask.setCallback(new AddressPickTask.Callback() {
+                    @Override
+                    public void onAddressInitFailed() {
+                        ToastUtil.showToast(InfoJobActivity.this, "数据初始化失败");
+                    }
+
+                    @Override
+                    public void onAddressPicked(Province province, City city, County county) {
+                        if (county == null) {
+                            tvProvince.setText(province.getAreaName());
+                            tvCity.setText(city.getAreaName());
+                        } else {
+                            tvProvince.setText(province.getAreaName());
+                            tvCity.setText(city.getAreaName());
+                            tvCounty.setText(county.getAreaName());
+                        }
+                    }
+                });
+                addresstask.setMoreCallback(new AddressPickTask.MoreCallback() {
+                    @Override
+                    public void onAddressInitFailed() {
+                        ToastUtil.showToast(InfoJobActivity.this, "数据初始化失败");
+                    }
+
+                    @Override
+                    public void onFirstWheeled(int index, String item) {
+                        tvProvince.setText(item);
+                    }
+
+                    @Override
+                    public void onSecondWheeled(int index, String item) {
+                        tvCity.setText(item);
+                    }
+
+                    @Override
+                    public void onThirdWheeled(int index, String item) {
+                        tvCounty.setText(item);
+                    }
+                });
+                addresstask.execute("北京市", "北京市", "朝阳区");
+                break;
+            case R.id.ll_monthly_income://月收入
+                SinglePicker<String> picker = new SinglePicker<>(this, new String[]{
+                        "2000以下", "2000-3000元", "3001-5000元", "5001-8000元", "8000-12000元", "12001-15000元", "15001-18000元", "18000以上"
+                });
+                SinglePickContarts.getIntance().Singlepicker(picker, new SingleItem() {
+                    @Override
+                    public void onItemPicked(int index, String item) {
+                        tvMonthlyIncome.setText(item);
+                    }
+                }, "2000以下", 0);
+                break;
+            case R.id.loading_btn://提交
+
+                break;
+        }
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // TODO: add setContentView(...) invocation
+        ButterKnife.bind(this);
+    }
+}

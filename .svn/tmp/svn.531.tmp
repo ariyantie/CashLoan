@@ -1,0 +1,169 @@
+package com.dumai.xianjindai.activity;
+
+import android.content.Intent;
+import android.graphics.PixelFormat;
+import android.os.Bundle;
+import android.support.v4.view.ViewPager;
+import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.WindowManager;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import com.dumai.xianjindai.R;
+import com.dumai.xianjindai.base.BaseActivity;
+import com.dumai.xianjindai.util.ToastUtils;
+import com.dumai.xianjindai.util.view.ToolbarAttr;
+import com.dumai.xianjindai.util.view.ToolbarHelper;
+import com.dumai.xianjindai.view.CalculaLimitDialog;
+import com.dumai.xianjindai.view.HorizontalProgressBar;
+
+import butterknife.BindView;
+import butterknife.OnClick;
+
+/**
+ * 名称：MyDataActivity.java
+ * 描述：我的资料
+ *
+ * @author haoruigang
+ * @version v1.0
+ * @date：2017-11-22 11:49:58
+ */
+public class MyDataActivity extends BaseActivity {
+
+
+    @BindView(R.id.horizontal_progress_view)
+    HorizontalProgressBar horizontalProgressView;
+    @BindView(R.id.ll_infoIdentity)
+    LinearLayout llInfoIdentity;
+    @BindView(R.id.ll_inforjob)
+    LinearLayout llInforjob;
+    @BindView(R.id.ll_infocontact)
+    LinearLayout llInfocontact;
+    @BindView(R.id.ll_credit_auth)
+    LinearLayout llCreditAuth;
+    @BindView(R.id.ll_more_auth)
+    LinearLayout llMoreAuth;
+    private Bundle bundle;
+
+    @Override
+    protected int getContentViewId() {
+        // 使窗口支持透明度
+        getWindow().setFormat(PixelFormat.TRANSLUCENT);
+        return R.layout.dm_activity_my_data;
+    }
+
+
+    @Override
+    protected void init() {
+        super.init();
+        //horizontalProgressView
+        horizontalProgressView.setProgressWithAnimation(60).setProgressListener(new HorizontalProgressBar.ProgressListener() {
+            @Override
+            public void currentProgressListener(float currentProgress) {
+            }
+        });
+        horizontalProgressView.startProgressAnimation();
+        alertMessage();
+    }
+
+    @Override
+    protected void initToolbar(ToolbarHelper toolbarHelper) {
+        Toolbar tooble = toolbarHelper.getToolbar();
+        toolbarHelper.setTitle("我的资料");
+        toolbarHelper.setMenuTitle("", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        }, new ToolbarAttr() {
+            @Override
+            public void TextViewAttr(TextView textView) {
+                textView.setBackgroundResource(R.drawable.icon_help);
+                Toolbar.LayoutParams layoutParams = new Toolbar.LayoutParams(36, 36);
+                layoutParams.gravity = Gravity.RIGHT;
+                layoutParams.rightMargin = 18;
+                textView.setLayoutParams(layoutParams);
+            }
+        });
+        tooble.setNavigationIcon(R.drawable.icon_back);
+        tooble.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+    }
+
+    private void alertMessage() {
+        // 产生背景变暗效果
+        WindowManager.LayoutParams lp = MyDataActivity.this.getWindow().getAttributes();
+        lp.alpha = 0.5f;
+        MyDataActivity.this.getWindow().setAttributes(lp);
+        final CalculaLimitDialog calculaLimitDialog = new CalculaLimitDialog(MyDataActivity.this);
+        calculaLimitDialog.setCanceledOnTouchOutside(false);
+        calculaLimitDialog.setCancelable(false);
+        calculaLimitDialog.show();
+        calculaLimitDialog.setClicklistener(new CalculaLimitDialog.ClickListenerInterface() {
+
+
+            @Override
+            public void doClose() {
+                calculaLimitDialog.dismiss();
+                WindowManager.LayoutParams lp = MyDataActivity.this.getWindow().getAttributes();
+                lp.alpha = 1f;
+                MyDataActivity.this.getWindow().setAttributes(lp);
+            }
+
+            @Override
+            public void doCancel() {
+                calculaLimitDialog.dismiss();
+                WindowManager.LayoutParams lp = MyDataActivity.this.getWindow().getAttributes();
+                lp.alpha = 1f;
+                MyDataActivity.this.getWindow().setAttributes(lp);
+                ToastUtils.showToast(MyDataActivity.this, "正在计算额度......");
+            }
+
+            @Override
+            public void doUpdate() {
+                calculaLimitDialog.dismiss();
+                WindowManager.LayoutParams lp = MyDataActivity.this.getWindow().getAttributes();
+                lp.alpha = 1f;
+                MyDataActivity.this.getWindow().setAttributes(lp);
+            }
+        });
+    }
+
+    @OnClick({R.id.ll_infoIdentity, R.id.ll_inforjob, R.id.ll_infocontact, R.id.ll_credit_auth, R.id.ll_more_auth})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.ll_infoIdentity:
+                bundle = new Bundle();
+                bundle.putString("title", "身份信息");
+                startActivity(new Intent(MyDataActivity.this, InfoIdentityActivity.class).putExtras(bundle));
+                break;
+            case R.id.ll_inforjob:
+                bundle = new Bundle();
+                bundle.putString("title", "工作信息");
+                startActivity(new Intent(MyDataActivity.this, InfoJobActivity.class).putExtras(bundle));
+                break;
+            case R.id.ll_infocontact:
+                bundle = new Bundle();
+                bundle.putString("title", "联系信息");
+                startActivity(new Intent(MyDataActivity.this, InfoContactActivity.class).putExtras(bundle));
+                break;
+            case R.id.ll_credit_auth:
+                bundle = new Bundle();
+                bundle.putString("title", "信用认证");
+                startActivity(new Intent(MyDataActivity.this, InfoCreditActivity.class).putExtras(bundle));
+                break;
+            case R.id.ll_more_auth:
+                Bundle bundle = new Bundle();
+                bundle.putString("title", "更多认证");
+                startActivity(new Intent(MyDataActivity.this, InfoMoreActivity.class).putExtras(bundle));
+                break;
+        }
+    }
+}

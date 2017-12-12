@@ -1,0 +1,33 @@
+package com.dumai.xianjindai.http.okhttp;
+
+/**
+ * @author haoruigang
+ * @Package com.haoruigang.okhttpdome
+ * @project OkHttpDome
+ * @Description: TODO(这里用一句话描述这个类的作用)
+ * @date 2017/11/26 15:50
+ */
+public class Config {
+
+    public static class API{
+
+        public static final String WAPI_IP = "capi.yunyangdata.com";
+        public static final String WAPI_HTTP_BASE = "http://" + WAPI_IP;
+        // v3产品服务器端口
+        public static final String WAPI_HTTP_PORT = "8080";
+        public static final String WAPI_HTTP_URL = WAPI_HTTP_BASE + ":"
+                + WAPI_HTTP_PORT;
+        /*
+         * v3基本请求地址
+         */
+        public static String PROJECTNAME = "capi";// 项目名称
+        public static final String WAPI_URL_S = WAPI_HTTP_URL + "/" + PROJECTNAME
+                + "/";
+        /*
+             * v3登录地址
+             */
+        public static final String WAPI_USER_LOGIN_URL1 = WAPI_URL_S
+                + "loginController.do?apiUserLogin";
+
+    }
+}

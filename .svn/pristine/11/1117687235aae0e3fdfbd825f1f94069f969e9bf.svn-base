@@ -1,0 +1,46 @@
+package com.dumai.xianjindai.activity;
+
+import android.content.Intent;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.View;
+
+import com.dumai.xianjindai.R;
+import com.dumai.xianjindai.base.BaseActivity;
+import com.dumai.xianjindai.util.view.ToolbarHelper;
+
+/**
+ * 名称：CreditCardDataActivity.java
+ * 描述：信用卡信息
+ *
+ * @author haoruigang
+ * @version v1.0
+ * @date： 2017-11-27 09:47:57
+ */
+public class CreditCardDataActivity extends BaseActivity {
+
+    @Override
+    protected int getContentViewId() {
+        return R.layout.dm_activity_credit_card_data;
+    }
+
+    @Override
+    protected void initToolbar(ToolbarHelper toolbarHelper) {
+        toolbarHelper.setTitle("信用卡信息");
+        Toolbar toolbar = toolbarHelper.getToolbar();
+        toolbar.setNavigationIcon(R.drawable.icon_back);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+        toolbarHelper.setMenuTitle("添加", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(CreditCardDataActivity.this,CreditCardAddActivity.class));
+            }
+        });
+    }
+}

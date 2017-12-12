@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/whitesmoke"
+    android:orientation="vertical"
+    tools:context="com.dumai.loan.activity.ScheduledExActivity">
+
+    <include layout="@layout/toolbar" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/pixel_size_16"
+        android:orientation="horizontal">
+
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+
+            <View
+                android:layout_width="@dimen/pixel_size_1"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/pixel_size_40"
+                android:background="@color/action_text_color_enabled" />
+
+            <View
+                android:layout_width="@dimen/pixel_size_8"
+                android:layout_height="@dimen/pixel_size_8"
+                android:layout_marginLeft="@dimen/pixel_size_36"
+                android:layout_marginTop="@dimen/pixel_size_26"
+                android:background="@color/orange" />
+
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/pixel_size_26"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/pixel_size_20"
+                android:layout_marginTop="@dimen/pixel_size_22"
+                android:text="@string/sheduled_data"
+                android:textSize="@dimen/text_size_13" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/pixel_size_20"
+                android:layout_marginTop="@dimen/pixel_size_26"
+                android:text="@string/sheduled_title"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_15" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/pixel_size_20"
+                android:layout_marginTop="@dimen/pixel_size_16"
+                android:text="@string/sheduled_content"
+                android:textSize="@dimen/pixel_size_13" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</LinearLayout>

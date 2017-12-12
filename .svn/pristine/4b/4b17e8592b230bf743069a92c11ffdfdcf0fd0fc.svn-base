@@ -1,0 +1,42 @@
+package com.dumai.xianjindai.activity;
+
+import android.support.v7.widget.Toolbar;
+import android.view.View;
+
+import com.dumai.xianjindai.R;
+import com.dumai.xianjindai.base.BaseActivity;
+import com.dumai.xianjindai.util.view.ToolbarHelper;
+
+/**
+ * 注册
+ * haoruigang
+ * 2017-11-23 16:10:21
+ */
+public class RegisterActivity extends BaseActivity {
+
+    @Override
+    protected int getContentViewId() {
+        return R.layout.dm_activity_register;
+    }
+
+    @Override
+    protected void initToolbar(ToolbarHelper toolbarHelper) {
+
+        toolbarHelper.setTitle("注册");
+        toolbarHelper.setLeftMenuTitle("登录", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+        Toolbar toolbar = toolbarHelper.getToolbar();
+        toolbar.setNavigationIcon(R.drawable.icon_back);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+    }
+}

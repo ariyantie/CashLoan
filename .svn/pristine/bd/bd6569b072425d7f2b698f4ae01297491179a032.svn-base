@@ -1,0 +1,81 @@
+package com.dumai.xianjindai.db;
+
+/**
+ * 名称：MySqliteDatabase.java
+ * 描述：Sqlite数据库
+ *
+ * @author haoruigang
+ * @version v1.0
+ * @date：2017 2017/11/29 14:05
+ */
+public class MySqliteDatabase {
+
+    public static MySqliteDatabase sqliteDatabase;
+
+    //数据库名
+    public static String DATABASE_NAME = "CashLoan";//SQLite数据库名
+    //表名
+    public static String TABLE_LOGIN_NAME = "Login";//登录表名
+
+    public static MySqliteDatabase getInstance() {
+        if (sqliteDatabase == null) {
+            sqliteDatabase = new MySqliteDatabase();
+        }
+        return sqliteDatabase;
+    }
+
+    public MySqliteDatabase() {
+        super();
+    }
+
+    /**
+     * 创建数据库、创建表
+     *
+     * @param tablename
+     */
+    public void Table(String tablename) {
+        //创建Sqlite数据库(库名),登录表（表名）
+    }
+
+    /**
+     * 增
+     *
+     * @param tablename
+     * @param object
+     */
+    public Integer INSERT(String tablename, Object object) {
+        return null;
+    }
+
+
+    /**
+     * 删
+     *
+     * @param tablename
+     */
+    public Integer DELETE(String tablename) {
+        return null;
+    }
+
+    /**
+     * 改
+     *
+     * @param tablename
+     * @param object
+     * @return
+     */
+    public Object UPDATE(String tablename, Class object) {
+        return null;
+    }
+
+    /**
+     * 查
+     *
+     * @param tablename
+     * @param cls
+     * @return
+     */
+    public Object QUERY(String tablename, Class cls) {
+        return null;
+    }
+}

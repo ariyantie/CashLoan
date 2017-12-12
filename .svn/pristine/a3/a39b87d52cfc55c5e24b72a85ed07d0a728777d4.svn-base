@@ -1,0 +1,133 @@
+package com.dumai.xianjindai.fragments;
+
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.net.Uri;
+import android.os.Build;
+import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import com.dumai.xianjindai.R;
+import com.dumai.xianjindai.activity.CameraActivity;
+import com.dumai.xianjindai.activity.ItemDecorationActivity;
+import com.dumai.xianjindai.activity.MyDataActivity;
+import com.dumai.xianjindai.base.BaseFragment;
+import com.dumai.xianjindai.util.EmptyUtils;
+import com.dumai.xianjindai.util.GradientUtils;
+import com.dumai.xianjindai.util.ResourcesUtils;
+import com.dumai.xianjindai.util.SharedUtils;
+import com.dumai.xianjindai.util.view.ToolbarAttr;
+import com.dumai.xianjindai.util.view.ToolbarHelper;
+import com.dumai.xianjindai.view.CircleImg;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+import butterknife.Unbinder;
+
+import static android.app.Activity.RESULT_OK;
+
+/**
+ * 我的
+ */
+public class MineFragment extends BaseFragment {
+
+    @BindView(R.id.ll_mydata_click)
+    LinearLayout llMydataClick;
+    @BindView(R.id.backdrop)
+    CircleImg backdrop;
+    @BindView(R.id.username)
+    TextView username;
+    @BindView(R.id.register)
+    TextView register;
+
+    @Override
+    protected int getContentViewId() {
+        return R.layout.dm_fragment_mine;
+    }
+
+    @Override
+    public void initActionBar() {
+        super.initActionBar();
+    }
+
+    @Override
+    protected void initToolbar(ToolbarHelper toolbarHelper) {
+        GradientUtils.setColor(getActivity(), R.drawable.mine_title_bg, true);
+        toolbarHelper.setMenuTitle("", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(), ItemDecorationActivity.class));
+            }
+        }, new ToolbarAttr() {
+            @Override
+            public void TextViewAttr(TextView textView) {
+                textView.setBackgroundResource(R.drawable.ic_forum);
+            }
+        });
+
+        Toolbar toolbar = toolbarHelper.getToolbar();
+        toolbar.setBackground(ResourcesUtils.getDrawable(R.drawable.mine_title_bg));
+        toolbar.setNavigationIcon(R.drawable.ic_dashboard);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(), ItemDecorationActivity.class));
+            }
+        });
+    }
+
+    @Override
+    public void onUpdateUI() {
+        String userName = SharedUtils.getString(getContext(), "username");
+        if (EmptyUtils.isNotEmpty(userName)) {
+            username.setText(userName);
+            register.setVisibility(View.GONE);
+        } else {
+            register.setVisibility(View.VISIBLE);
+        }
+    }
+
+    @OnClick({R.id.ll_mydata_click, R.id.backdrop})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.ll_mydata_click:
+                startActivity(new Intent(getContext(), MyDataActivity.class));
+                break;
+            case R.id.backdrop:
+                takePicture();
+                break;
+        }
+    }
+
+    public void takePicture() {
+        //上传图片
+        Intent intent = new Intent(getActivity(), CameraActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putBoolean(CameraActivity.ISUPDATE, false);
+        intent.putExtras(bundle);
+        startActivityForResult(intent, CameraActivity.ACTIVITY_RESULT);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        // TODO Auto-generated method stub
+        if (resultCode == RESULT_OK) {
+            if (requestCode == CameraActivity.ACTIVITY_RESULT) {
+                Uri picture = data.getData();
+                Bitmap photo = BitmapFactory.decodeFile(picture.getPath());
+                backdrop.setImageBitmap(photo);
+            }
+        }
+        super.onActivityResult(requestCode, resultCode, data);
+    }
+}

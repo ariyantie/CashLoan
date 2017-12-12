@@ -1,0 +1,174 @@
+package com.dumai.xianjindai.activity;
+
+import android.content.Intent;
+import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+
+import com.dumai.xianjindai.R;
+import com.dumai.xianjindai.base.BaseActivity;
+import com.dumai.xianjindai.bean.LoginBean;
+import com.dumai.xianjindai.db.MySqliteDatabase;
+import com.dumai.xianjindai.global.Constant;
+import com.dumai.xianjindai.http.http.HttpCallBack;
+import com.dumai.xianjindai.http.http.HttpManager;
+import com.dumai.xianjindai.jparser.JsonLoginObject;
+import com.dumai.xianjindai.util.EmptyUtils;
+import com.dumai.xianjindai.util.ToastUtils;
+import com.dumai.xianjindai.util.view.ToolbarHelper;
+
+import org.jetbrains.annotations.NotNull;
+
+import butterknife.BindView;
+import butterknife.OnClick;
+import ruan.mydatabase.com.BaseUser;
+import ruan.mydatabase.com.CheckDatabase;
+import ruan.mydatabase.com.DatabaseCallback;
+import ruan.mydatabase.com.api.Establish;
+
+/**
+ * 登录
+ * haoruigang
+ * 2017年11月17日17:42:41
+ */
+public class LoginActivity extends BaseActivity {
+
+    private String TAG = getClass().getName();
+
+    @BindView(R.id.user_id)
+    EditText userId;
+    @BindView(R.id.password)
+    EditText password;
+    @BindView(R.id.btn_login)
+    Button btnLogin;
+    @BindView(R.id.rl_user_id)
+    RelativeLayout rlUserId;
+    @BindView(R.id.rl_password)
+    RelativeLayout rlPassword;
+    @BindView(R.id.registerAction)
+    TextView registerAction;
+    @BindView(R.id.forget_psd)
+    TextView forgetPsd;
+
+    @Override
+    protected int getContentViewId() {
+        return R.layout.dm_activity_login;
+    }
+
+    @Override
+    protected void initToolbar(ToolbarHelper toolbarHelper) {
+        toolbarHelper.setTitle("登录");
+        Toolbar toolbar = toolbarHelper.getToolbar();
+        // 显示导航按钮
+        toolbar.setNavigationIcon(R.drawable.icon_back);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+    }
+
+
+    @Override
+    protected void init() {
+        super.init();
+
+        // 传入表的结构
+        Establish establish = new Establish();
+        establish.put("username", "varchar(50)");
+        establish.put("psd", "varchar(50)");
+        //创建数据库、表
+        MySqliteDatabase.getInstance().Table(MySqliteDatabase.TABLE_LOGIN_NAME, establish);
+
+    }
+
+
+    @OnClick({R.id.btn_login, R.id.registerAction, R.id.forget_psd})
+    public void OnClick(View v) {
+        switch (v.getId()) {
+            case R.id.btn_login:
+                setLogin();
+                break;
+            case R.id.registerAction:
+                startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
+                break;
+            case R.id.forget_psd:
+                startActivity(new Intent(LoginActivity.this, ForgetPsdActivity.class));
+                break;
+        }
+    }
+
+    private String username, psd;
+
+    private void setLogin() {
+        if (validate()) {
+            //登录bean
+            LoginBean loginBean = new LoginBean();
+            loginBean.setUsername(username);
+            loginBean.setPsd(psd);
+            Integer loginTable = MySqliteDatabase.getInstance().INSERT(MySqliteDatabase.TABLE_LOGIN_NAME, loginBean);//增加登录数据
+            if (loginTable == 0) {
+                return;
+            }
+//            loginBean = (LoginBean) MySqliteDatabase.getInstance().QUERY(MySqliteDatabase.TABLE_LOGIN_NAME, LoginBean.class);
+            HttpManager.getInstance().doLoginRequest("LoginActivity", username, psd, new HttpCallBack<JsonLoginObject>(LoginActivity.this, true) {
+                @Override
+                public void onError(Throwable throwable) {
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            ToastUtils.showToastInThread(LoginActivity.this, "网络不可用!");
+                        }
+                    });
+                }
+
+                @Override
+                public void onSuccess(JsonLoginObject date) {
+                    if (date != null) {
+                        String result = date.getValue().getResult();
+                        if (result.equals("success")) {
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    ToastUtils.showToastInThread(LoginActivity.this, "登录成功");
+                                }
+                            });
+                            startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+                            finish();
+                        }
+                    } else {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                ToastUtils.showToastInThread(LoginActivity.this, "网络不可用!");
+                            }
+                        });
+                    }
+                }
+            });
+        }
+    }
+
+    /**
+     * 非空验证
+     *
+     * @return
+     */
+    private boolean validate() {
+        username = userId.getText().toString().trim();
+        psd = password.getText().toString().trim();
+        if (!EmptyUtils.isNotEmpty(username)) {
+            ToastUtils.showToast(LoginActivity.this, "账号为空!");
+            return false;
+        }
+        if (!EmptyUtils.isNotEmpty(psd)) {
+            ToastUtils.showToast(LoginActivity.this, "密码为空!");
+            return false;
+        }
+        return true;
+    }
+}

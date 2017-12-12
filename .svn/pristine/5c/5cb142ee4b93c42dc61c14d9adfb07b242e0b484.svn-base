@@ -1,0 +1,43 @@
+package com.dumai.xianjindai.activity;
+
+import android.support.v7.widget.Toolbar;
+import android.view.View;
+
+import com.dumai.xianjindai.R;
+import com.dumai.xianjindai.base.BaseActivity;
+import com.dumai.xianjindai.util.view.ToolbarHelper;
+
+/**
+ * 名称：CreditCardAddActivity.java
+ * 描述：添加信用卡
+ *
+ * @author haoruigang
+ * @version v1.0
+ * @date： 2017-11-27 10:00:02
+ */
+public class CreditCardAddActivity extends BaseActivity {
+
+    @Override
+    protected int getContentViewId() {
+        return R.layout.dm_activity_credit_card_add;
+    }
+
+    @Override
+    protected void initToolbar(ToolbarHelper toolbarHelper) {
+        toolbarHelper.setTitle("添加信用卡");
+        toolbarHelper.setMenuTitle("提交", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        Toolbar toolbar = toolbarHelper.getToolbar();
+        toolbar.setNavigationIcon(R.drawable.icon_back);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+    }
+}

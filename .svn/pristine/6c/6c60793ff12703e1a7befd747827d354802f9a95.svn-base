@@ -1,0 +1,24 @@
+package com.dumai.xianjindai.activity;
+
+import com.dumai.xianjindai.R;
+import com.dumai.xianjindai.base.BaseActivity;
+import com.dumai.xianjindai.util.view.ToolbarHelper;
+
+/**
+ * 2017-12-11 16:33:22
+ * haoruigang
+ * 帮助中心
+ */
+public class CenterHelpActivity extends BaseActivity {
+
+
+    @Override
+    protected int getContentViewId() {
+        return R.layout.dm_activity_center_help;
+    }
+
+    @Override
+    protected void initToolbar(ToolbarHelper toolbarHelper) {
+
+    }
+}

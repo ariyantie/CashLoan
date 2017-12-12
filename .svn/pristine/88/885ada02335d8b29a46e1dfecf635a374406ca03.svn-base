@@ -1,0 +1,150 @@
+package com.dumai.xianjindai.activity;
+
+import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.widget.LinearLayout;
+
+import com.dumai.xianjindai.R;
+import com.dumai.xianjindai.base.BaseActivity;
+import com.dumai.xianjindai.util.ToastUtil;
+import com.dumai.xianjindai.util.view.ToolbarHelper;
+import com.dumai.xianjindai.view.AddressPickTask;
+import com.dumai.xianjindai.view.CareerTypeTask;
+import com.dumai.xianjindai.view.pickers.common.LineConfig;
+import com.dumai.xianjindai.view.pickers.entity.City;
+import com.dumai.xianjindai.view.pickers.entity.County;
+import com.dumai.xianjindai.view.pickers.entity.Province;
+import com.dumai.xianjindai.view.pickers.listeners.OnItemPickListener;
+import com.dumai.xianjindai.view.pickers.picker.SinglePicker;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
+/**
+ * 工作信息
+ * haoruigang
+ * 2017-11-24 14:19:04
+ */
+public class InfoJobActivity extends BaseActivity {
+
+    @BindView(R.id.ll_career_type)
+    LinearLayout llCareerType;
+    @BindView(R.id.ll_provincial_city)
+    LinearLayout llProvincialCity;
+    @BindView(R.id.ll_monthly_income)
+    LinearLayout llMonthlyIncome;
+    private String title;
+    private LineConfig config;
+
+    @Override
+    protected int getContentViewId() {
+        return R.layout.dm_activity_info_job;
+    }
+
+    @Override
+    protected void init() {
+        super.init();
+        Bundle mBundle = getIntent().getExtras();
+        title = mBundle.getString("title");
+    }
+
+    @Override
+    protected void initToolbar(ToolbarHelper toolbarHelper) {
+        toolbarHelper.setTitle(title);
+        Toolbar toolbar = toolbarHelper.getToolbar();
+        toolbar.setNavigationIcon(R.drawable.icon_back);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+    }
+
+    @OnClick({R.id.ll_career_type, R.id.ll_provincial_city, R.id.ll_monthly_income})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.ll_career_type://职位类型
+                CareerTypeTask careertask = new CareerTypeTask(this);
+                careertask.setHideProvince(false);
+                careertask.setHideCounty(false);
+                careertask.setCallback(new CareerTypeTask.Callback() {
+                    @Override
+                    public void onAddressInitFailed() {
+                        ToastUtil.showToast(InfoJobActivity.this, "数据初始化失败");
+                    }
+
+                    @Override
+                    public void onAddressPicked(Province province, City city, County county) {
+                        if (county == null) {
+                            ToastUtil.showToast(InfoJobActivity.this, province.getAreaName() + city.getAreaName());
+                        } else {
+                            ToastUtil.showToast(InfoJobActivity.this, province.getAreaName() + city.getAreaName() + county.getAreaName());
+                        }
+                    }
+                });
+                careertask.execute("自由职业", "无业", "无业");
+                break;
+            case R.id.ll_provincial_city://地址
+                AddressPickTask addresstask = new AddressPickTask(this);
+                addresstask.setHideProvince(false);
+                addresstask.setHideCounty(false);
+                addresstask.setCallback(new AddressPickTask.Callback() {
+                    @Override
+                    public void onAddressInitFailed() {
+                        ToastUtil.showToast(InfoJobActivity.this, "数据初始化失败");
+                    }
+
+                    @Override
+                    public void onAddressPicked(Province province, City city, County county) {
+                        if (county == null) {
+                            ToastUtil.showToast(InfoJobActivity.this, province.getAreaName() + city.getAreaName());
+                        } else {
+                            ToastUtil.showToast(InfoJobActivity.this, province.getAreaName() + city.getAreaName() + county.getAreaName());
+                        }
+                    }
+                });
+                addresstask.execute("北京市", "北京市", "朝阳区");
+                break;
+            case R.id.ll_monthly_income://月收入
+                SinglePicker<String> picker1 = new SinglePicker<>(this, new String[]{
+                        "2000以下", "2000-3000元", "3001-5000元", "5001-8000元", "8000-12000元", "12001-15000元", "15001-18000元","18000以上"
+                });
+                picker1.setCanLoop(true);//禁用循环
+                picker1.setTopBackgroundColor(0xFFEEEEEE);
+                picker1.setTopHeight(50);
+                picker1.setTopLineColor(0xFF33B5E5);
+                picker1.setTopLineHeight(1);
+                picker1.setTitleText("请选择");
+                picker1.setTitleTextColor(0xFF999999);
+                picker1.setTitleTextSize(12);
+                picker1.setCancelText("取消");
+                picker1.setCancelTextColor(0xFF33B5E5);
+                picker1.setCancelTextSize(13);
+                picker1.setSubmitText("确定");
+                picker1.setSubmitTextColor(0xFF33B5E5);
+                picker1.setSubmitTextSize(13);
+                picker1.setSelectedTextColor(0xFFEE0000);
+                picker1.setUnSelectedTextColor(0xFF999999);
+                LineConfig config = new LineConfig();
+                config.setColor(0xFFEE0000);//线颜色
+                config.setAlpha(140);//线透明度
+                config.setRatio((float) (1.0 / 8.0));//线比率
+                picker1.setLineConfig(config);
+                picker1.setItemWidth(200);
+                picker1.setBackgroundColor(0xFFE1E1E1);
+                picker1.setSelectedItem("2000以下");
+                picker1.setSelectedIndex(0);
+                picker1.setOnItemPickListener(new OnItemPickListener<String>() {
+                    @Override
+                    public void onItemPicked(int index, String item) {
+                        ToastUtil.showToast(InfoJobActivity.this, "index=" + index + ", item=" + item);
+                    }
+                });
+                picker1.show();
+                break;
+        }
+    }
+}

@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/whitesmoke"
+    android:orientation="vertical"
+    tools:context="com.dumai.xianjindai.activity.InfoCreditActivity">
+
+    <include layout="@layout/toolbar" />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/pixel_size_14"
+        android:layout_marginTop="@dimen/pixel_size_10"
+        android:drawableLeft="@drawable/icon_authen_prompt"
+        android:gravity="center_vertical"
+        android:text="@string/complete_any"
+        android:textColor="@color/back_4"
+        android:textSize="@dimen/text_size_10" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/pixel_size_100"
+        android:layout_marginLeft="@dimen/pixel_size_10"
+        android:layout_marginRight="@dimen/pixel_size_10"
+        android:layout_marginTop="@dimen/pixel_size_15"
+        android:background="@drawable/full_data_bg"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/ll_credit_card"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginLeft="@dimen/pixel_size_18"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10.0dip"
+                android:layout_weight="2"
+                android:gravity="center_vertical"
+                android:text="@string/credit_card_data"
+                android:textColor="@color/black_1"
+                android:textSize="@dimen/text_size_13" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="@dimen/pixel_size_16"
+                android:layout_weight="1"
+                android:gravity="right|center_vertical">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="10.0dip"
+                    android:layout_weight="3"
+                    android:gravity="center_vertical|right"
+                    android:text="@string/is_certified"
+                    android:textColor="@color/tan"
+                    android:textSize="@dimen/text_size_13" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/icon_next" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="@dimen/text_size_26"
+            android:background="@color/gainsboro" />
+
+        <LinearLayout
+            android:id="@+id/ll_cell_phone"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginLeft="@dimen/pixel_size_18"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10.0dip"
+                android:layout_weight="2"
+                android:gravity="center_vertical"
+                android:text="@string/cell_phone_num"
+                android:textColor="@color/black_1"
+                android:textSize="@dimen/text_size_13" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="@dimen/pixel_size_16"
+                android:layout_weight="1"
+                android:gravity="right|center_vertical">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="10.0dip"
+                    android:layout_weight="3"
+                    android:gravity="center_vertical|right"
+                    android:text="@string/is_certified"
+                    android:textColor="@color/tan"
+                    android:textSize="@dimen/text_size_13" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/icon_next" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/pixel_size_6"
+        android:layout_marginLeft="@dimen/pixel_size_40"
+        android:layout_marginRight="@dimen/pixel_size_32"
+        android:layout_marginTop="@dimen/pixel_size_14"
+        android:text="@string/verifica_only"
+        android:textColor="@color/spec_text_color"
+        android:textSize="@dimen/text_size_11" />
+</LinearLayout>

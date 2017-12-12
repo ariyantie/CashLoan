@@ -1,0 +1,25 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- 填充 -->
+    <!--<solid android:color="@color/btn_login_normal" />-->
+
+    <!-- 圆角 -->
+    <corners
+        android:bottomLeftRadius="50dp"
+        android:bottomRightRadius="50dp"
+        android:topLeftRadius="50dp"
+        android:topRightRadius="50dp" />
+
+    <!-- 渐变 -->
+    <gradient
+        android:angle="45"
+        android:centerColor="#388CFF"
+        android:centerX="0"
+        android:centerY="0"
+        android:endColor="#5DA9FF"
+        android:gradientRadius="90"
+        android:startColor="@android:color/white"
+        android:type="radial"
+        android:useLevel="true" />
+
+</shape>

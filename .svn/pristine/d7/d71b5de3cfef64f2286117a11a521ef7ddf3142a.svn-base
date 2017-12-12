@@ -1,0 +1,175 @@
+package com.dumai.xianjindai.activity;
+
+import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.widget.LinearLayout;
+
+import com.dumai.xianjindai.R;
+import com.dumai.xianjindai.base.BaseActivity;
+import com.dumai.xianjindai.util.ToastUtil;
+import com.dumai.xianjindai.util.view.ToolbarHelper;
+import com.dumai.xianjindai.view.AddressPickTask;
+import com.dumai.xianjindai.view.LoadingButton;
+import com.dumai.xianjindai.view.pickers.common.LineConfig;
+import com.dumai.xianjindai.view.pickers.entity.City;
+import com.dumai.xianjindai.view.pickers.entity.County;
+import com.dumai.xianjindai.view.pickers.entity.Province;
+import com.dumai.xianjindai.view.pickers.listeners.OnItemPickListener;
+import com.dumai.xianjindai.view.pickers.picker.SinglePicker;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
+/**
+ * 身份信息
+ * haoruigang
+ * 2017-11-23 15:15:22
+ */
+public class InfoIdentityActivity extends BaseActivity {
+
+    @BindView(R.id.loading_btn)
+    LoadingButton loadingBtn;
+    @BindView(R.id.ll_provincial_city)
+    LinearLayout llProvincialCity;
+    @BindView(R.id.ll_highest_education)
+    LinearLayout llHighestEducation;
+    @BindView(R.id.ll_please_select)
+    LinearLayout llPleaseSelect;
+    private String title;
+    private LineConfig config;
+
+    @Override
+    protected int getContentViewId() {
+        return R.layout.dm_activity_info_identity;
+    }
+
+    @Override
+    protected void init() {
+        super.init();
+        Bundle mBundle = getIntent().getExtras();
+        title = mBundle.getString("title");
+    }
+
+    @Override
+    protected void initToolbar(ToolbarHelper toolbarHelper) {
+        toolbarHelper.setTitle(title);
+        Toolbar toolbar = toolbarHelper.getToolbar();
+        toolbar.setNavigationIcon(R.drawable.icon_back);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+    }
+
+    @OnClick({R.id.loading_btn, R.id.ll_provincial_city, R.id.ll_highest_education, R.id.ll_please_select})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.loading_btn:
+                loadingBtn.startLoading();//开始加载按钮动画
+                loadingBtn.setClickable(false);
+
+//                loadingBtn.stopLoading();//停止加载按钮动画
+//                loadingBtn.setEnabled(true);
+                break;
+            case R.id.ll_provincial_city://地址
+                AddressPickTask task = new AddressPickTask(this);
+                task.setHideProvince(false);
+                task.setHideCounty(false);
+                task.setCallback(new AddressPickTask.Callback() {
+                    @Override
+                    public void onAddressInitFailed() {
+                        ToastUtil.showToast(InfoIdentityActivity.this, "数据初始化失败");
+                    }
+
+                    @Override
+                    public void onAddressPicked(Province province, City city, County county) {
+                        if (county == null) {
+                            ToastUtil.showToast(InfoIdentityActivity.this, province.getAreaName() + city.getAreaName());
+                        } else {
+                            ToastUtil.showToast(InfoIdentityActivity.this, province.getAreaName() + city.getAreaName() + county.getAreaName());
+                        }
+                    }
+                });
+                task.execute("北京市", "北京市", "朝阳区");
+                break;
+            case R.id.ll_highest_education://学历
+                SinglePicker<String> picker1 = new SinglePicker<>(this, new String[]{
+                        "高中以下", "高中", "中专", "大专", "本科", "硕士", "博士"
+                });
+                picker1.setCanLoop(true);//禁用循环
+                picker1.setTopBackgroundColor(0xFFEEEEEE);
+                picker1.setTopHeight(50);
+                picker1.setTopLineColor(0xFF33B5E5);
+                picker1.setTopLineHeight(1);
+                picker1.setTitleText("请选择");
+                picker1.setTitleTextColor(0xFF999999);
+                picker1.setTitleTextSize(12);
+                picker1.setCancelText("取消");
+                picker1.setCancelTextColor(0xFF33B5E5);
+                picker1.setCancelTextSize(13);
+                picker1.setSubmitText("确定");
+                picker1.setSubmitTextColor(0xFF33B5E5);
+                picker1.setSubmitTextSize(13);
+                picker1.setSelectedTextColor(0xFFEE0000);
+                picker1.setUnSelectedTextColor(0xFF999999);
+                LineConfig config = new LineConfig();
+                config.setColor(0xFFEE0000);//线颜色
+                config.setAlpha(140);//线透明度
+                config.setRatio((float) (1.0 / 8.0));//线比率
+                picker1.setLineConfig(config);
+                picker1.setItemWidth(200);
+                picker1.setBackgroundColor(0xFFE1E1E1);
+                picker1.setSelectedItem("高中");
+                picker1.setSelectedIndex(1);
+                picker1.setOnItemPickListener(new OnItemPickListener<String>() {
+                    @Override
+                    public void onItemPicked(int index, String item) {
+                        ToastUtil.showToast(InfoIdentityActivity.this, "index=" + index + ", item=" + item);
+                    }
+                });
+                picker1.show();
+                break;
+            case R.id.ll_please_select://婚姻状况
+                SinglePicker<String> picker2 = new SinglePicker<>(this, new String[]{
+                        "未婚", "已婚未育", "已婚已育", "离异", "其他"
+                });
+                picker2.setCanLoop(true);//禁用循环
+                picker2.setTopBackgroundColor(0xFFEEEEEE);
+                picker2.setTopHeight(50);
+                picker2.setTopLineColor(0xFF33B5E5);
+                picker2.setTopLineHeight(1);
+                picker2.setTitleText("请选择");
+                picker2.setTitleTextColor(0xFF999999);
+                picker2.setTitleTextSize(12);
+                picker2.setCancelText("取消");
+                picker2.setCancelTextColor(0xFF33B5E5);
+                picker2.setCancelTextSize(13);
+                picker2.setSubmitText("确定");
+                picker2.setSubmitTextColor(0xFF33B5E5);
+                picker2.setSubmitTextSize(13);
+                picker2.setSelectedTextColor(0xFFEE0000);
+                picker2.setUnSelectedTextColor(0xFF999999);
+                config = new LineConfig();
+                config.setColor(0xFFEE0000);//线颜色
+                config.setAlpha(140);//线透明度
+                config.setRatio((float) (1.0 / 8.0));//线比率
+                picker2.setLineConfig(config);
+                picker2.setItemWidth(200);
+                picker2.setBackgroundColor(0xFFE1E1E1);
+                picker2.setSelectedItem("已婚未育");
+                picker2.setSelectedIndex(1);
+                picker2.setOnItemPickListener(new OnItemPickListener<String>() {
+                    @Override
+                    public void onItemPicked(int index, String item) {
+                        ToastUtil.showToast(InfoIdentityActivity.this, "index=" + index + ", item=" + item);
+                    }
+                });
+                picker2.show();
+                break;
+        }
+    }
+}

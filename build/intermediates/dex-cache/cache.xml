@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="D:\Users\AndroidStudioProjects\CashLoan\app\libs\eventbus.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="e3bbf5ed95dafe926a804b58c7d30dbf4404bbd9">
+        <dex dex="D:\Users\AndroidStudioProjects\CashLoan\app\build\intermediates\transforms\dex\debug\folders\1000\2\eventbus_c286913821d171cfd527dd110b7232145cfcd0e5\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Users\AndroidStudioProjects\CashLoan\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="6098c27e3fe5d7e94787ed110a89aab104f32423">
+        <dex dex="D:\Users\AndroidStudioProjects\CashLoan\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_57e9c9125d45ae6afc13e84efadd392d719ec397\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Users\AndroidStudioProjects\CashLoan\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
+        <dex dex="D:\Users\AndroidStudioProjects\CashLoan\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_25d7de8d91a704618352697567bd81007229d64c\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Users\AndroidStudioProjects\CashLoan\app\libs\log4j-1.2.17.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="4f90475694c41965c9a0c8bac53ea5c690dea446">
+        <dex dex="D:\Users\AndroidStudioProjects\CashLoan\app\build\intermediates\transforms\dex\debug\folders\1000\2\log4j-1.2.17_cffb8a2944e84578172ade7d6911c792ec27e51f\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Users\AndroidStudioProjects\CashLoan\app\libs\android-logging-log4j-1.0.3.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="bee823e6955d3a5806700026f838ebbca907ac7a">
+        <dex dex="D:\Users\AndroidStudioProjects\CashLoan\app\build\intermediates\transforms\dex\debug\folders\1000\2\android-logging-log4j-1.0.3_8d83eb0cd3c01ed955628eec857943ddffd3217a\classes.dex" />
+    </item>
+
+</items>

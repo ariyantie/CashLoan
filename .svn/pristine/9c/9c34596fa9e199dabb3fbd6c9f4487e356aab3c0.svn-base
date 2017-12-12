@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/whitesmoke"
+    android:orientation="vertical"
+    tools:context="com.dumai.xianjindai.activity.CenterHelpActivity">
+
+    <include layout="@layout/toolbar" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/pixel_size_5"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/ll_sys_alarm"
+            android:layout_width="80dip"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/pixel_size_10"
+            android:layout_marginRight="@dimen/pixel_size_5"
+            android:layout_marginTop="@dimen/pixel_size_10"
+            android:layout_weight="1"
+            android:background="@drawable/full_data_bg"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <ImageView
+                android:id="@+id/sysalarmImage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="10dip"
+                android:background="@drawable/icon_wechat_con" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="@string/tv_wechat_con"
+                android:textColor="@color/black_1"
+                android:textSize="@dimen/text_size_16" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="@string/tv_wechat_num"
+                android:textColor="@color/darkgray"
+                android:textSize="@dimen/text_size_11" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/ll_sys_announ"
+            android:layout_width="80dip"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/pixel_size_5"
+            android:layout_marginRight="@dimen/pixel_size_10"
+            android:layout_marginTop="@dimen/pixel_size_10"
+            android:layout_weight="1"
+            android:background="@drawable/full_data_bg"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="10dip"
+                android:layout_weight="1"
+                android:background="@drawable/icon_phone_con" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="@string/tv_phone_con"
+                android:textColor="@color/black_1"
+                android:textSize="@dimen/text_size_16" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="@string/tv_data_num"
+                android:textColor="@color/darkgray"
+                android:textSize="@dimen/text_size_11" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/pixel_size_5"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/ll_adv_sug"
+            android:layout_width="80dip"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/pixel_size_10"
+            android:layout_marginRight="@dimen/pixel_size_5"
+            android:layout_weight="1"
+            android:background="@drawable/full_data_bg"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <ImageView
+                android:id="@+id/advsugImage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="10dip"
+                android:background="@drawable/icon_loan_proce" />
+
+            <TextView
+                android:id="@+id/signText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="@string/tv_loan_proce"
+                android:textColor="@color/black_1"
+                android:textSize="@dimen/text_size_16" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_login_log"
+            android:layout_width="80dip"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/pixel_size_5"
+            android:layout_marginRight="@dimen/pixel_size_10"
+            android:layout_weight="1"
+            android:background="@drawable/full_data_bg"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="10dip"
+                android:layout_weight="1"
+                android:background="@drawable/icon_repay_guide" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/tv_repay_guide"
+                android:textColor="@color/black_1"
+                android:textSize="@dimen/text_size_16" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/pixel_size_10"
+        android:background="@drawable/full_data_bg"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/pixel_size_18"
+            android:layout_marginRight="@dimen/pixel_size_18"
+            android:layout_marginTop="@dimen/pixel_size_15"
+            android:text="@string/tv_common_problem"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/text_size_16" />
+
+        <com.dumai.xianjindai.view.PagerScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/pixel_size_15"
+            android:layout_marginTop="@dimen/pixel_size_15"
+            android:fillViewport="true"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:paddingBottom="@dimen/pixel_size_15"
+                    android:paddingLeft="@dimen/pixel_size_18"
+                    android:paddingRight="@dimen/pixel_size_18"
+                    android:paddingTop="@dimen/pixel_size_15"
+                    android:text="@string/tv_common_problem_1"
+                    android:textColor="@color/black_1"
+                    android:textSize="@dimen/text_size_14" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:paddingBottom="@dimen/pixel_size_15"
+                    android:paddingLeft="@dimen/pixel_size_18"
+                    android:paddingRight="@dimen/pixel_size_18"
+                    android:paddingTop="@dimen/pixel_size_15"
+                    android:text="@string/tv_common_problem_2"
+                    android:textColor="@color/black_1"
+                    android:textSize="@dimen/text_size_14" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:paddingBottom="@dimen/pixel_size_15"
+                    android:paddingLeft="@dimen/pixel_size_18"
+                    android:paddingRight="@dimen/pixel_size_18"
+                    android:paddingTop="@dimen/pixel_size_15"
+                    android:text="@string/tv_common_problem_3"
+                    android:textColor="@color/black_1"
+                    android:textSize="@dimen/text_size_14" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:paddingBottom="@dimen/pixel_size_15"
+                    android:paddingLeft="@dimen/pixel_size_18"
+                    android:paddingRight="@dimen/pixel_size_18"
+                    android:paddingTop="@dimen/pixel_size_15"
+                    android:text="@string/tv_common_problem_4"
+                    android:textColor="@color/black_1"
+                    android:textSize="@dimen/text_size_14" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:paddingBottom="@dimen/pixel_size_15"
+                    android:paddingLeft="@dimen/pixel_size_18"
+                    android:paddingRight="@dimen/pixel_size_18"
+                    android:paddingTop="@dimen/pixel_size_15"
+                    android:text="@string/tv_common_problem_5"
+                    android:textColor="@color/black_1"
+                    android:textSize="@dimen/text_size_14" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:paddingBottom="@dimen/pixel_size_15"
+                    android:paddingLeft="@dimen/pixel_size_18"
+                    android:paddingRight="@dimen/pixel_size_18"
+                    android:paddingTop="@dimen/pixel_size_15"
+                    android:text="@string/tv_common_problem_6"
+                    android:textColor="@color/black_1"
+                    android:textSize="@dimen/text_size_14" />
+
+            </LinearLayout>
+
+        </com.dumai.xianjindai.view.PagerScrollView>
+
+    </LinearLayout>
+
+
+</LinearLayout>

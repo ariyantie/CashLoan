@@ -1,0 +1,160 @@
+<<<<<<< .mine
+package com.dumai.loan.activity;
+
+import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import com.dumai.loan.R;
+import com.dumai.loan.base.BaseActivity;
+import com.dumai.loan.util.view.ToolbarHelper;
+import com.dumai.loan.view.pickers.SingleItem;
+import com.dumai.loan.view.pickers.SinglePickContarts;
+import com.dumai.loan.view.pickers.picker.SinglePicker;
+
+import butterknife.BindView;
+import butterknife.OnClick;
+
+/**
+ * 添加借记卡
+ * haoruigang
+ * 2017-12-11 15:27:14
+ */
+public class DebitCardAddActivity extends BaseActivity {
+
+
+    @BindView(R.id.my_debit_card_number)
+    EditText myDebitCardNumber;
+    @BindView(R.id.tv_sel_issuing_bank)
+    TextView tvSelIssuingBank;
+    @BindView(R.id.ll_sel_issuing_bank)
+    LinearLayout llSelIssuingBank;
+    @BindView(R.id.tv_credit_limit)
+    TextView tvCreditLimit;
+
+    @Override
+    protected int getContentViewId() {
+        return R.layout.dm_activity_debit_card_add;
+    }
+
+    @Override
+    protected void initToolbar(ToolbarHelper toolbarHelper) {
+        toolbarHelper.setTitle("添加借记卡");
+        toolbarHelper.setMenuTitle("提交", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        }, null);
+        Toolbar toolbar = toolbarHelper.getToolbar();
+        toolbar.setNavigationIcon(R.drawable.icon_back);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+    }
+
+    @OnClick(R.id.ll_sel_issuing_bank)
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.ll_sel_issuing_bank:
+                SinglePicker<String> picker = new SinglePicker<>(this, new String[]{
+                        "中国工商银行", "中国建设银行", "中国农业银行", "中国邮政储蓄银行", "中国银行", "招商银行", "交通银行", "平安银行", "中国民生银行", "中国光大银行", "中信银行", "兴业银行", "上海浦东发展银行", "北京银行", "上海银行"
+                });
+                SinglePickContarts.getIntance().Singlepicker(picker, new SingleItem() {
+                    @Override
+                    public void onItemPicked(int index, String item) {
+                        tvSelIssuingBank.setText(item);
+                    }
+                }, "中国工商银行", 0);
+                break;
+        }
+    }
+
+}
+=======
+package com.dumai.xianjindai.activity;
+
+import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import com.dumai.xianjindai.R;
+import com.dumai.xianjindai.base.BaseActivity;
+import com.dumai.xianjindai.util.view.ToolbarAttr;
+import com.dumai.xianjindai.util.view.ToolbarHelper;
+import com.dumai.xianjindai.view.pickers.SingleItem;
+import com.dumai.xianjindai.view.pickers.SinglePickContarts;
+import com.dumai.xianjindai.view.pickers.picker.SinglePicker;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
+/**
+ * 添加借记卡
+ * haoruigang
+ * 2017-12-11 15:27:14
+ */
+public class DebitCardAddActivity extends BaseActivity {
+
+
+    @BindView(R.id.my_debit_card_number)
+    EditText myDebitCardNumber;
+    @BindView(R.id.tv_sel_issuing_bank)
+    TextView tvSelIssuingBank;
+    @BindView(R.id.ll_sel_issuing_bank)
+    LinearLayout llSelIssuingBank;
+    @BindView(R.id.tv_credit_limit)
+    TextView tvCreditLimit;
+
+    @Override
+    protected int getContentViewId() {
+        return R.layout.dm_activity_debit_card_add;
+    }
+
+    @Override
+    protected void initToolbar(ToolbarHelper toolbarHelper) {
+        toolbarHelper.setTitle("添加借记卡");
+        toolbarHelper.setMenuTitle("提交", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        }, null);
+        Toolbar toolbar = toolbarHelper.getToolbar();
+        toolbar.setNavigationIcon(R.drawable.icon_back);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+    }
+
+    @OnClick(R.id.ll_sel_issuing_bank)
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.ll_sel_issuing_bank:
+                SinglePicker<String> picker = new SinglePicker<>(this, new String[]{
+                        "中国工商银行", "中国建设银行", "中国农业银行", "中国邮政储蓄银行", "中国银行", "招商银行", "交通银行", "平安银行", "中国民生银行", "中国光大银行", "中信银行", "兴业银行", "上海浦东发展银行", "北京银行", "上海银行"
+                });
+                SinglePickContarts.getIntance().Singlepicker(picker, new SingleItem() {
+                    @Override
+                    public void onItemPicked(int index, String item) {
+                        tvSelIssuingBank.setText(item);
+                    }
+                }, "中国工商银行", 0);
+                break;
+        }
+    }
+
+}
+>>>>>>> .r164

@@ -1,0 +1,44 @@
+package com.dumai.xianjindai.http.http;
+
+import com.dumai.xianjindai.http.okhttp.Config;
+import com.dumai.xianjindai.http.okhttp.OkHttpUtils;
+import com.dumai.xianjindai.http.volley.VolleyUtils;
+
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * 作者： haoruigang on 2017-11-28 11:14:10.
+ * 类描述：网络帮助类(主要用来管理参数)
+ */
+public class HttpManager {
+    //    public VolleyUtils httpUtils;
+    public OkHttpUtils okhttpUtils;
+
+    private HttpManager() {
+//        httpUtils = VolleyUtils.getInstance();
+        okhttpUtils = OkHttpUtils.Instance();
+    }
+
+    private static class SingletonHolder {
+        static HttpManager INSTANCE = new HttpManager();
+    }
+
+    public static HttpManager getInstance() {
+        return SingletonHolder.INSTANCE;
+    }
+
+    /**
+     * 作者： haoruigang on 2017/11/28 11:16
+     * 描述: 登录
+     */
+    public void doLoginRequest(String tag, String username, String pwd, HttpCallBack callBack) {
+        final Map<String, String> map = new HashMap<>();
+        map.put("loginName", username);
+        map.put("password", pwd);
+        String url = Config.API.LOGIN_URL;
+        okhttpUtils.postJsonOkhttpRequest(tag, url, map, callBack);
+    }
+}
+
+

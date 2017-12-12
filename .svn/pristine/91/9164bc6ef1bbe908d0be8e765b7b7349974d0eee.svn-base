@@ -1,0 +1,68 @@
+package com.dumai.xianjindai.activity;
+
+import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.dumai.xianjindai.R;
+import com.dumai.xianjindai.base.BaseActivity;
+import com.dumai.xianjindai.util.ResourcesUtils;
+import com.dumai.xianjindai.util.view.ToolbarHelper;
+import com.dumai.xianjindai.view.LoadingButton;
+
+import butterknife.BindView;
+import butterknife.OnClick;
+
+/**
+ * 名称：WorkProofActivity.java
+ * 描述：工作证明
+ *
+ * @author haoruigang
+ * @version v1.0
+ * @date： 2017-11-27 11:08:11
+ */
+public class WorkProofActivity extends BaseActivity {
+
+    @BindView(R.id.img_proof_material)
+    ImageView imgProofMaterial;
+    @BindView(R.id.tv_can_upload)
+    TextView tvCanUpload;
+    @BindView(R.id.loading_btn)
+    LoadingButton loadingBtn;
+
+    @Override
+    protected int getContentViewId() {
+        return R.layout.dm_activity_work_proof;
+    }
+
+    @Override
+    protected void initToolbar(ToolbarHelper toolbarHelper) {
+        toolbarHelper.setTitle("工作证明");
+
+        Toolbar toolbar = toolbarHelper.getToolbar();
+        toolbar.setNavigationIcon(R.drawable.icon_back);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+    }
+
+    @Override
+    protected void init() {
+        super.init();
+        tvCanUpload.setText(ResourcesUtils.getString(R.string.word_can_upload));
+    }
+
+    @OnClick({R.id.img_proof_material, R.id.loading_btn})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.img_proof_material:
+                break;
+            case R.id.loading_btn:
+                break;
+        }
+    }
+}

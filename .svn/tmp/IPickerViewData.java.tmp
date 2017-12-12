@@ -1,0 +1,21 @@
+<<<<<<< .mine
+package com.dumai.loan.view.pickers.model;
+
+/**
+ * @author matt
+ * blog: addapp.cn
+ */
+public interface IPickerViewData {
+    String getPickerViewText();
+}
+=======
+package com.dumai.xianjindai.view.pickers.model;
+
+/**
+ * @author matt
+ * blog: addapp.cn
+ */
+public interface IPickerViewData {
+    String getPickerViewText();
+}
+>>>>>>> .r164

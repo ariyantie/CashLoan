@@ -1,0 +1,130 @@
+package com.dumai.xianjindai.fragments;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import com.dumai.xianjindai.R;
+import com.dumai.xianjindai.activity.AccountActivity;
+import com.dumai.xianjindai.activity.HistoryActivity;
+import com.dumai.xianjindai.activity.ItemDecorationActivity;
+import com.dumai.xianjindai.activity.LoanCardActivity;
+import com.dumai.xianjindai.activity.LoginActivity;
+import com.dumai.xianjindai.activity.MoreActivity;
+import com.dumai.xianjindai.activity.MyDataActivity;
+import com.dumai.xianjindai.activity.MyRefereeActivity;
+import com.dumai.xianjindai.base.BaseFragment;
+import com.dumai.xianjindai.util.GradientUtils;
+import com.dumai.xianjindai.util.ResourcesUtils;
+import com.dumai.xianjindai.util.SharedUtils;
+import com.dumai.xianjindai.util.view.ToolbarAttr;
+import com.dumai.xianjindai.util.view.ToolbarHelper;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+import butterknife.Unbinder;
+
+/**
+ * 我的
+ */
+public class MineFragment extends BaseFragment {
+
+    @BindView(R.id.ll_mydata_click)
+    LinearLayout llMydataClick;
+    @BindView(R.id.username)
+    TextView username;
+    @BindView(R.id.register)
+    TextView register;
+    @BindView(R.id.ll_mine_title)
+    LinearLayout llMineTitle;
+    @BindView(R.id.ll_loan_card)
+    LinearLayout llLoanCard;
+    @BindView(R.id.ll_history)
+    LinearLayout llHistory;
+    @BindView(R.id.ll_my_referee)
+    LinearLayout llMyReferee;
+    private Boolean isSuccess;
+
+    @Override
+    protected int getContentViewId() {
+        return R.layout.dm_fragment_mine;
+    }
+
+    @Override
+    protected void initToolbar(ToolbarHelper toolbarHelper) {
+        //动态改变“colorPrimaryDark”来实现沉浸式状态栏
+        GradientUtils.setColor(getActivity(), R.drawable.mine_title_bg, true);
+        toolbarHelper.setMenuTitle("", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(), ItemDecorationActivity.class));
+            }
+        }, new ToolbarAttr() {
+            @Override
+            public void TextViewAttr(TextView textView) {
+                textView.setBackgroundResource(R.drawable.ic_forum);
+            }
+        });
+
+        Toolbar toolbar = toolbarHelper.getToolbar();
+        toolbar.setBackground(ResourcesUtils.getDrawable(R.drawable.mine_title_bg));
+        toolbar.setNavigationIcon(R.drawable.ic_dashboard);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(), MoreActivity.class));
+            }
+        });
+    }
+
+    @Override
+    public void onUpdateUI() {
+        String userName = SharedUtils.getString(getContext(), "username");
+        isSuccess = SharedUtils.getBoolean(getContext(), "LoginSuccess", false);
+        if (isSuccess) {
+            username.setText(userName);
+            register.setVisibility(View.GONE);
+        } else {
+            username.setText("登\t\t录");
+            register.setVisibility(View.VISIBLE);
+        }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        onUpdateUI();
+    }
+
+    @OnClick({R.id.ll_mine_title, R.id.ll_mydata_click, R.id.ll_loan_card, R.id.ll_history, R.id.ll_my_referee})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.ll_mine_title:
+                isSuccess = SharedUtils.getBoolean(getContext(), "LoginSuccess", false);
+                if (isSuccess) {
+                    startActivity(new Intent(getActivity(), AccountActivity.class));
+                } else {
+                    startActivity(new Intent(getActivity(), LoginActivity.class));
+                }
+                break;
+            case R.id.ll_mydata_click:
+                startActivity(new Intent(getContext(), MyDataActivity.class));
+                break;
+            case R.id.ll_loan_card:
+                startActivity(new Intent(getContext(), LoanCardActivity.class));
+                break;
+            case R.id.ll_history:
+                startActivity(new Intent(getContext(), HistoryActivity.class));
+                break;
+            case R.id.ll_my_referee:
+                startActivity(new Intent(getContext(), MyRefereeActivity.class));
+                break;
+        }
+    }
+}

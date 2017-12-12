@@ -1,0 +1,43 @@
+package com.dumai.xianjindai.jparser;
+
+/**
+ * 名称：JsonLoginObject
+ * 描述：登录解析类
+ *
+ * @author haoruigang
+ * @version v1.0
+ * @date：2017 2017/11/29 9:41
+ */
+public class JsonLoginObject {
+
+
+    /**
+     * value : {"result":"failed"}
+     */
+
+    private ValueBean value;
+
+    public ValueBean getValue() {
+        return value;
+    }
+
+    public void setValue(ValueBean value) {
+        this.value = value;
+    }
+
+    public static class ValueBean {
+        /**
+         * result : failed
+         */
+
+        private String result;
+
+        public String getResult() {
+            return result;
+        }
+
+        public void setResult(String result) {
+            this.result = result;
+        }
+    }
+}
