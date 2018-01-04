@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="android-wgallery-1.0.0">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.android/build-cache/770ca0c7b072fbeacf9ff2b0c33b1b344e956172/output/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.android/build-cache/770ca0c7b072fbeacf9ff2b0c33b1b344e956172/output/res" />
+      <root url="file://$USER_HOME$/.android/build-cache/c15f75eca074131d51b36bfbdbcd3ad4f1841a5f/output/res" />
+      <root url="jar://$USER_HOME$/.android/build-cache/c15f75eca074131d51b36bfbdbcd3ad4f1841a5f/output/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
